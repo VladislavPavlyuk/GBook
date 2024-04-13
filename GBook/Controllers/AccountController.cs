@@ -30,7 +30,7 @@ namespace StoringPassword.Controllers
                     ModelState.AddModelError("", "Wrong login or password!");
                     return View(logon);
                 }
-                var users = _context.Users.Where(a => a.Login == logon.Login);
+                var users = _context.Users.Where(a => a.Name == logon.Login);
                 if (users.ToList().Count == 0)
                 {
                     ModelState.AddModelError("", "Wrong login or password!");
@@ -54,8 +54,8 @@ namespace StoringPassword.Controllers
                     ModelState.AddModelError("", "Wrong login or password!");
                     return View(logon);
                 }
-                HttpContext.Session.SetString("FirstName", user.FirstName);
-                HttpContext.Session.SetString("LastName", user.LastName);
+                HttpContext.Session.SetString("Name", user.Name);
+
                 return RedirectToAction("Index", "Home");
             }
             return View(logon);
@@ -73,9 +73,7 @@ namespace StoringPassword.Controllers
             if (ModelState.IsValid)
             {
                 User user = new User();
-                user.FirstName = reg.FirstName;
-                user.LastName = reg.LastName;
-                user.Login = reg.Login;
+                user.Name = reg.Name;
 
                 byte[] saltbuf = new byte[16];
 
