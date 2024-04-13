@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StoringPassword.Models;
+using GBook.Models;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace StoringPassword.Controllers
+namespace GBook.Controllers
 {
     public class AccountController : Controller
     {

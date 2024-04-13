@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StoringPassword.Models
+namespace GBook.Models
 {
     // класс модели-представления (view-model)
     public class RegisterModel

@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace StoringPassword.Models
+namespace GBook.Models
 {
     public class UserContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Messages> Messages { get; set; }
         public UserContext(DbContextOptions<UserContext> options)
             : base(options)
         {

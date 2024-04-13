@@ -1,26 +1,26 @@
 using Microsoft.EntityFrameworkCore;
-using StoringPassword.Models;
+using GBook.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Все сессии работают поверх объекта IDistributedCache, и 
-// ASP.NET Core предоставляет встроенную реализацию IDistributedCache
-builder.Services.AddDistributedMemoryCache();// добавляем IDistributedMemoryCache
-builder.Services.AddSession();  // Добавляем сервисы сессии
+// Р’СЃРµ СЃРµСЃСЃРёРё СЂР°Р±РѕС‚Р°СЋС‚ РїРѕРІРµСЂС… РѕР±СЉРµРєС‚Р° IDistributedCache, Рё 
+// ASP.NET Core РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ РІСЃС‚СЂРѕРµРЅРЅСѓСЋ СЂРµР°Р»РёР·Р°С†РёСЋ IDistributedCache
+builder.Services.AddDistributedMemoryCache();// РґРѕР±Р°РІР»СЏРµРј IDistributedMemoryCache
+builder.Services.AddSession();  // Р”РѕР±Р°РІР»СЏРµРј СЃРµСЂРІРёСЃС‹ СЃРµСЃСЃРёРё
 
-// Получаем строку подключения из файла конфигурации
+// РџРѕР»СѓС‡Р°РµРј СЃС‚СЂРѕРєСѓ РїРѕРґРєР»СЋС‡РµРЅРёСЏ РёР· С„Р°Р№Р»Р° РєРѕРЅС„РёРіСѓСЂР°С†РёРё
 string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// добавляем контекст ApplicationContext в качестве сервиса в приложение
+// РґРѕР±Р°РІР»СЏРµРј РєРѕРЅС‚РµРєСЃС‚ ApplicationContext РІ РєР°С‡РµСЃС‚РІРµ СЃРµСЂРІРёСЃР° РІ РїСЂРёР»РѕР¶РµРЅРёРµ
 builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(connection));
 
-// Добавляем сервисы MVC
+// Р”РѕР±Р°РІР»СЏРµРј СЃРµСЂРІРёСЃС‹ MVC
 builder.Services.AddControllersWithViews();
 
 
 var app = builder.Build();
-app.UseSession();   // Добавляем middleware-компонент для работы с сессиями
-app.UseStaticFiles(); // обрабатывает запросы к файлам в папке wwwroot
+app.UseSession();   // Р”РѕР±Р°РІР»СЏРµРј middleware-РєРѕРјРїРѕРЅРµРЅС‚ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРµСЃСЃРёСЏРјРё
+app.UseStaticFiles(); // РѕР±СЂР°Р±Р°С‚С‹РІР°РµС‚ Р·Р°РїСЂРѕСЃС‹ Рє С„Р°Р№Р»Р°Рј РІ РїР°РїРєРµ wwwroot
 
 app.MapControllerRoute(
     name: "default",

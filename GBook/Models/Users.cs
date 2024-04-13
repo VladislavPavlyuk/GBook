@@ -1,4 +1,4 @@
-﻿namespace StoringPassword.Models
+﻿namespace GBook.Models
 {
     public class User
     {

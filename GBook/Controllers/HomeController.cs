@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace StoringPassword.Controllers
+namespace GBook.Controllers
 {
     public class HomeController : Controller
     {
