@@ -16,18 +16,9 @@ namespace GBook.Controllers
         // GET: Messages
         public async Task<IActionResult> Index()
         {
-            return _context.Messages != null ?
-            View(await _context.Messages.ToListAsync()) :
-            Problem("Entity set 'UserContext.Messages'  is null.");
+            var userContext = _context.Messages.Include(p => p.User);
+            return View(await userContext.ToListAsync());
 
-            /*if(HttpContext.Session.GetString("Name") != null)
-            {
-                return _context.Messages != null ?
-                            View(await _context.Messages.ToListAsync()) :
-                            Problem("Entity set 'UserContext.Messages'  is null.");
-            }
-            else
-                return RedirectToAction("Login", "Account");*/
         }
 
         // GET: Messages/Create

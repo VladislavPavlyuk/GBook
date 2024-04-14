@@ -74,7 +74,7 @@ namespace GBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User();
+                Users user = new Users();
                 user.Name = reg.Name;
 
                 byte[] saltbuf = new byte[16];
