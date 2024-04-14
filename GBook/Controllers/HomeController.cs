@@ -16,14 +16,18 @@ namespace GBook.Controllers
         // GET: Messages
         public async Task<IActionResult> Index()
         {
-            if(HttpContext.Session.GetString("Name") != null)
+            return _context.Messages != null ?
+            View(await _context.Messages.ToListAsync()) :
+            Problem("Entity set 'UserContext.Messages'  is null.");
+
+            /*if(HttpContext.Session.GetString("Name") != null)
             {
                 return _context.Messages != null ?
                             View(await _context.Messages.ToListAsync()) :
                             Problem("Entity set 'UserContext.Messages'  is null.");
             }
             else
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Account");*/
         }
 
         // GET: Messages/Create

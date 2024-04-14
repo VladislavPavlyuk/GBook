@@ -2,7 +2,7 @@
 @model IEnumerable<GBook.Models.Messages>
 
 @{
-    ViewBag.Title = "Messages";
+    ViewBag.Title = "Index";
     //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -35,7 +35,7 @@
             {
             <tr>
                 <td><p>@Html.DisplayFor(modelItem => item.MessageDate)</p></td>
-                <td><p>@Html.DisplayFor(modelItem => item.UserId)</p></td>
+                <td><p>@Html.DisplayFor(modelItem => item.User.Name)</p></td>
                 <td><p>@Html.DisplayFor(modelItem => item.Message)</p></td>
             </tr>
             }
