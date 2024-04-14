@@ -2,6 +2,7 @@
 using GBook.Models;
 using System.Security.Cryptography;
 using System.Text;
+using NuGet.Protocol.Plugins;
 
 namespace GBook.Controllers
 {
@@ -54,7 +55,8 @@ namespace GBook.Controllers
                     ModelState.AddModelError("", "Wrong login or password!");
                     return View(logon);
                 }
-                HttpContext.Session.SetString("Name", user.Name);
+                HttpContext.Session.SetString("Name", user.Name); // создание сессионной переменной
+                HttpContext.Session.SetString("Id", user.Id.ToString());
 
                 return RedirectToAction("Index", "Home");
             }

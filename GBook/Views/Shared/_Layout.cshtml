@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ASP.NET Core MVC Application</title>
+    <title>@ViewData["Title"] - GBook Application</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/StudentsMVC.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GBook.styles.css" asp-append-version="true" />
 </head>
 <body>
         <header>
@@ -14,13 +14,13 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home page</a>
                 <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Register">Registration</a>
-                 @if (Context.Session.GetString("FirstName") == null)
+                 @if (Context.Session.GetString("Name") == null)
                 {
                     <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">Logоn</a>
                 }
                 else
                 {
-                    <span class="navbar-brand">Здравствуйте, @Context.Session.GetString("FirstName")  @Context.Session.GetString("LastName")</span>
+                    <span class="navbar-brand">Hello, @Context.Session.GetString("Name") !  </span>
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
                 }
             </div>
